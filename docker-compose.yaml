@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  backup:
+    image: iluvatyr/volume-backup:logs
+    container_name: volume-backup
+    restart: unless-stopped
+    volumes:
+      - /backup-bind-mount-for-docker-volumes:/backup        ## Bind mount as rsync target.
+      - volume-backup-logs:/logs                            ## (optional) volume (enable volume under volumes) or bind mount for rsync logs
+
+      ## Mounting all docker volumes as readonly, which will be backed up to the /backup folder periodically
+      - <your-docker-volume-1>:/volumes/<your-docker-volume-1>:ro
+      - <your-docker-volume-2>:/volumes/<your-docker-volume-2>:ro
+      - <same-compose-volume>:/volumes/<same-compose-volume>:ro
+
+  same-compose-container:
+    image: alpine:latest
+    volumes:
+      - same-compose-volume
+    restart: unless-stopped
+
+volumes:
+  volume-backup-logs:                                       ## (optional) comment this volume if you do not need logs persisting
+  ## Volumes to be backed up
+  <same-compose-volume>:
+  ## Volumes to be backed up from other compose files (stacks in portainer)
+  <your-docker-volume-1>:
+    external: true
+  <your-docker-volume-2>:
+    external: true
+
