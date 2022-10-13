@@ -16,7 +16,7 @@ services:
   same-compose-container:
     image: alpine:latest
     volumes:
-      - same-compose-volume
+      - same-compose-volume:/test
     restart: unless-stopped
 
 volumes:
