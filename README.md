@@ -22,9 +22,9 @@ TZ=Europe/London # default: UTC
 
 CRON_BACKUP_PERIOD=0 4 * * * # by default every day @4:00 am. Check https://crontab.guru if you want to change this value.
 
-BACKUP_LOG_RETENTION=30 # (number of logfiles)
+BACKUP_LOG_RETENTION=30 # (number of logfiles, default 30)
 
-BACKUP_DRYRUN=false # will run rsync in dryrun mode (no actual syncing). Use this for testing if everything is set up correctly.
+BACKUP_DRYRUN=false # will run rsync in dryrun mode (no actual syncing). Use this for testing if everything is set up correctly. (default false)
 
-UPTIME_PUSH_URL=https://uptime-kuma.iluvatyr.com/api/push/D4oIi3VXOj?status=up&msg=OK&ping=
+UPTIME_PUSH_URL=https://uptime-kuma.iluvatyr.com/api/push/D4oIi3VXOj?status=up&msg=OK&ping= (default not set)
 ```
