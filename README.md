@@ -17,12 +17,14 @@ docker run -it --rm --name volume-backup -v <your-volume-name-1>:/volumes/<your-
 ```
 
 ## Optional configuration changes via environment variables: 
+```
 TZ=Europe/London # default: UTC
 
-CRON_BACKUP_PERIOD="0 4 * * *" # by default every day @4:00 am. Check https://crontab.guru if you want to change this value.
+CRON_BACKUP_PERIOD=0 4 * * * # by default every day @4:00 am. Check https://crontab.guru if you want to change this value.
 
 BACKUP_LOG_RETENTION=30 # (number of logfiles)
 
 BACKUP_DRYRUN=false # will run rsync in dryrun mode (no actual syncing). Use this for testing if everything is set up correctly.
 
 UPTIME_PUSH_URL=https://uptime-kuma.iluvatyr.com/api/push/D4oIi3VXOj?status=up&msg=OK&ping=
+```
