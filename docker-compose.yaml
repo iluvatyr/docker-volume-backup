@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   backup:
-    image: iluvatyr/volume-backup:logs
+    image: iluvatyr/volume-backup:1.1
     container_name: volume-backup
     restart: unless-stopped
     environment:
@@ -20,7 +20,7 @@ services:
       - <same-compose-volume>:/volumes/<same-compose-volume>:ro
 
   same-compose-container:
-    image: alpine:latest
+    image: some_image:latest
     volumes:
       - same-compose-volume:/test
     restart: unless-stopped
