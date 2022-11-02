@@ -4,9 +4,15 @@ services:
     image: iluvatyr/volume-backup:logs
     container_name: volume-backup
     restart: unless-stopped
+    environment:
+      - TZ=Europe/Berlin
+      - BACKUP_LOG_RETENTION=3
+      - CRON_BACKUP_PERIOD=*/1 * * * *
+      #- BACKUP_DRYRUN=true # default=false
+      #- UPTIME_PUSH_URL=https://uptimekuma-domain.com/api/push/goIi3VXOj?status=up&msg=OK&ping=
     volumes:
       - /backup-bind-mount-for-docker-volumes:/backup        ## Bind mount as rsync target.
-      - volume-backup-logs:/logs                            ## (optional) volume (enable volume under volumes) or bind mount for rsync logs
+      - volume-backup-logs:/var/log/volume-backup                            ## (optional) volume (enable volume under volumes) or bind mount for rsync logs
 
       ## Mounting all docker volumes as readonly, which will be backed up to the /backup folder periodically
       - <your-docker-volume-1>:/volumes/<your-docker-volume-1>:ro
