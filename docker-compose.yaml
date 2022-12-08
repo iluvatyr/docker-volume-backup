@@ -6,8 +6,8 @@ services:
     restart: unless-stopped
     environment:
       - TZ=Europe/Berlin
-      - BACKUP_LOG_RETENTION=3
-      - CRON_BACKUP_PERIOD=*/1 * * * *
+      - BACKUP_LOG_RETENTION=30
+      - CRON_BACKUP_PERIOD=0 4 * * *
       #- BACKUP_DRYRUN=true # default=false
       #- UPTIME_PUSH_URL=https://uptimekuma-domain.com/api/push/goIi3VXOj?status=up&msg=OK&ping=
     volumes:

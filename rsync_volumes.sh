@@ -7,9 +7,9 @@ begin=$(date +%s) #Starttime rsync
 backup_function(){
 	if [ -f /app/.dryrun ]
 	then
-		rsync -avri -n --delete /volumes/ /backup/ | tee "$logdir/$logname"
+		rsync -avri -n -h --delete /volumes/ /backup/ | tee "$logdir/$logname"
 	else
-		rsync -avri --delete /volumes/ /backup/ | tee "$logdir/$logname"
+		rsync -avri -h --delete /volumes/ /backup/ | tee "$logdir/$logname"
 	fi
 }
 
