@@ -9,7 +9,7 @@ services:
       - BACKUP_LOG_RETENTION=30
       - CRON_BACKUP_PERIOD=0 4 * * *
       #- BACKUP_DRYRUN=true # default=false
-      #- UPTIME_PUSH_URL=https://uptimekuma-domain.com/api/push/goIi3VXOj?status=up&msg=OK&ping=
+      #- UPTIME_PUSH_URL=https://uptime-kuma.yourdomain.com/api/push/D4oFi3gGXsXj?status=up&msg=OK&ping= (default not set)
     volumes:
       - /backup-bind-mount-for-docker-volumes:/backup        ## Bind mount as rsync target.
       - volume-backup-logs:/var/log/volume-backup                            ## (optional) volume (enable volume under volumes) or bind mount for rsync logs
